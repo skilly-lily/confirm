@@ -3,7 +3,7 @@
 A simple tool for scripted confirmation.  Returns zero if confirmed, non-zero otherwise.
 
 ```shell
-$ confirm "Echo something?" -a && echo something
+$ confirm "Echo something?" -a 3 && echo something
 Echo something? [y/n]: 
 Echo something? [y/n]: 
 Echo something? [y/n]: y

@@ -1,5 +1,5 @@
 [package]
-name = "confirm"
+name = "confirm.rs"
 description = "A simple tool to obtain interactive confirmation in scripts."
 license = "MIT"
 homepage = "https://github.com/scruffystuffs/confirm"
@@ -16,3 +16,7 @@ anyhow = "1.0"
 atty = "0.2"
 getch = "0.2"
 structopt = "0.3"
+
+[[bin]]
+name = "confirm"
+path = "src/main.rs"

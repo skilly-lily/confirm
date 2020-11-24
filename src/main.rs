@@ -93,9 +93,8 @@ struct MainOptions {
 
     /// Number of times to ask
     ///
-    /// -1 for infinite retries, 0 to only ask once, 1 - 128 to retry that
-    /// many times.  Retry count of x means that the question can be asked up
-    /// to x times total.
+    /// Number of total times a question should be asked.  Use 0 for infinite
+    /// retries.
     #[structopt(short, long, default_value = "3", parse(try_from_str = parse_retry_count_opt))]
     ask_count: TryMode,
 

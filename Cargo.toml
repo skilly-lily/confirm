@@ -1,5 +1,5 @@
 [package]
-name = "confirm.rs"
+name = "confirm-rs"
 description = "A simple tool to obtain interactive confirmation in scripts."
 license = "MIT"
 homepage = "https://github.com/scruffystuffs/confirm"

@@ -48,7 +48,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "confirm"
+name = "confirm-rs"
 version = "0.1.0"
 dependencies = [
  "anyhow",

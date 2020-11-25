@@ -1,11 +1,11 @@
 [package]
 name = "confirm-rs"
 description = "A simple tool to obtain interactive confirmation in scripts."
-license_file = "UNLICENSE"
+license = "Unlicense"
 homepage = "https://github.com/scruffystuffs/confirm"
 repository = "https://github.com/scruffystuffs/confirm"
 documentation = "https://github.com/scruffystuffs/confirm/README.md"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Wesley Van Melle <van.melle.wes@gmail.com>"]
 edition = "2018"
 

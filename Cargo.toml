@@ -5,7 +5,7 @@ license = "Unlicense"
 homepage = "https://github.com/scruffystuffs/confirm"
 repository = "https://github.com/scruffystuffs/confirm"
 documentation = "https://github.com/scruffystuffs/confirm/README.md"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Wesley Van Melle <van.melle.wes@gmail.com>"]
 edition = "2018"
 

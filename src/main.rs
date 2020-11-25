@@ -166,7 +166,7 @@ impl Confirm {
         let mut new = self.prompt.clone();
         new.push(' ');
         new.push_str(optionbox);
-        new.push(':');
+        new.push_str(": ");
         new
     }
 
@@ -186,12 +186,14 @@ impl Confirm {
             }
         };
 
-        if input_buf.trim().is_empty() {
+        let response = input_buf.trim();
+
+        if response.is_empty() {
             Ok(self.default_response)
-        } else if self.use_full_words && !is_full_word(&input_buf) {
+        } else if self.use_full_words && !is_full_word(response) {
             Err(anyhow!("Please type yes or no"))
         } else {
-            Ok(Answer::from_str(&input_buf)?)
+            Ok(Answer::from_str(response)?)
         }
     }
 

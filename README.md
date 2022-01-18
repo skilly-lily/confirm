@@ -10,6 +10,16 @@ Echo something? [y/n]: y
 something
 ```
 
+## Installation
+
+Currently, must be installed using `cargo install confirm-rs`.  Platform support is determined by the `getch` crate.
+
+You can also download the code and build from source.
+
+## User guide
+
+The up-to-date docs are maintained in the `--help` output of the tool, copied below.
+
 `confirm --help` output:
 
 ``` text

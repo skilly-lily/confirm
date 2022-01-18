@@ -12,8 +12,8 @@ something
 
 `confirm --help` output:
 
-```
-confirm 0.1.0
+``` text
+confirm 1.0.0
 Get user confirmation
 
 USAGE:

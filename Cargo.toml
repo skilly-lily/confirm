@@ -5,15 +5,15 @@ license = "Unlicense"
 homepage = "https://github.com/scruffystuffs/confirm"
 repository = "https://github.com/scruffystuffs/confirm"
 documentation = "https://github.com/scruffystuffs/confirm/README.md"
-version = "0.1.2"
+version = "1.0.0"
 authors = ["Wesley Van Melle <van.melle.wes@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-anyhow = "1.0"
-atty = "0.2"
-getch = "0.2"
-structopt = "0.3"
+anyhow = "1.0.52"
+atty = "0.2.14"
+getch = "0.2.1"
+structopt = "0.3.25"
 
 [[bin]]
 name = "confirm"

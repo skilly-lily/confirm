@@ -10,10 +10,10 @@ authors = ["Wesley Van Melle <van.melle.wes@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-anyhow = "1.0.52"
+anyhow = "1.0.57"
 atty = "0.2.14"
-getch = "0.2.1"
-structopt = "0.3.25"
+clap = { version = "3.1.12", features = ["derive", "cargo"] }
+getch = "0.3.1"
 
 [[bin]]
 name = "confirm"

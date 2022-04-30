@@ -4,7 +4,7 @@ use std::io::{stdin, stdout, Write};
 use std::str::FromStr;
 
 use anyhow::{anyhow, Result};
-use structopt::StructOpt;
+use clap::Parser;
 
 #[derive(Debug, Copy, Clone, Eq, PartialEq)]
 enum Answer {
@@ -65,13 +65,13 @@ fn parse_retry_count_opt(s: &str) -> Result<TryMode> {
 }
 
 /// Get user confirmation
-#[derive(Clone, Debug, StructOpt)]
-#[structopt(name = "confirm")]
+#[derive(Clone, Debug, Parser)]
+#[clap(name = "confirm")]
 struct MainOptions {
     /// Require explicit "yes" or "no", not single letters.
     ///
     /// Cannot be used with --no-enter.
-    #[structopt(short, long)]
+    #[clap(short, long)]
     full_words: bool,
 
     /// Choose a default answer
@@ -81,21 +81,21 @@ struct MainOptions {
     /// If the retry count has been hit, then the process assumes a negative
     /// response and exits 1. Using the keyword "retry" is identical to
     /// omitting the option.
-    #[structopt(short, long, default_value = "retry", parse(try_from_str = parse_default_answer_opt))]
+    #[clap(short, long, default_value = "retry", parse(try_from_str = parse_default_answer_opt))]
     default: Answer,
 
     /// Don't require newlines
     ///
     /// Read the character on the terminal as it's typed, without waiting for
     /// the user to hit enter/return.  
-    #[structopt(long, conflicts_with = "full_words")]
+    #[clap(long, conflicts_with = "full_words")]
     no_enter: bool,
 
     /// Number of times to ask
     ///
     /// Number of total times a question should be asked.  Use 0 for infinite
     /// retries.
-    #[structopt(short, long, default_value = "3", parse(try_from_str = parse_retry_count_opt))]
+    #[clap(short, long, default_value = "3", parse(try_from_str = parse_retry_count_opt))]
     ask_count: TryMode,
 
     /// The prompt to display
@@ -103,7 +103,7 @@ struct MainOptions {
     /// Prompt of "Continue?" will become "Continue? [y/n]: ".  Options are
     /// added and highlighted based on given settings.  Original message will
     /// NEVER be modified.
-    #[structopt(name = "PROMPT", default_value = "Continue?")]
+    #[clap(name = "PROMPT", default_value = "Continue?")]
     prompt: String,
 }
 
@@ -248,7 +248,7 @@ fn main() {
     if atty::isnt(atty::Stream::Stdin) {
         eprintln!("Warning: using confirm when stdin is not a tty is not supported.");
     }
-    let opts = MainOptions::from_args();
+    let opts = MainOptions::parse();
     let confirmed = Confirm::from(opts).ask_loop();
     if !confirmed {
         std::process::exit(1);

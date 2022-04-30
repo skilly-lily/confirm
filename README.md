@@ -22,45 +22,66 @@ The up-to-date docs are maintained in the `--help` output of the tool, copied be
 
 `confirm --help` output:
 
-``` text
-confirm 1.0.0
-Get user confirmation
+```text
+confirm-rs 1.1.0
+A simple tool to obtain interactive confirmation in scripts.
 
 USAGE:
-    confirm [FLAGS] [OPTIONS] [PROMPT]
+    confirm [OPTIONS] [PROMPT]
 
-FLAGS:
-    -f, --full-words    
+ARGS:
+    <PROMPT>
+            The prompt to display
+            
+            Prompt of "Continue?" will become "Continue? [y/n]: ".  Options are added and
+            highlighted based on given settings.  Original message will NEVER be modified.
+            
+            [default: Continue?]
+
+OPTIONS:
+    -a, --ask-count <ASK_COUNT>
+            Number of times to ask
+            
+            Number of total times a question should be asked.  Use 0 for infinite retries.
+            
+            [default: 3]
+
+    -d, --default <DEFAULT>
+            Choose a default answer
+            
+            If no default is chosen, and the user supplies an empty answer, then a retry is
+            triggered.  Otherwise, the default is used on an empty answer. If the retry count has
+            been hit, then the process assumes a negative response and exits 1. Using the keyword
+            "retry" is identical to omitting the option.
+            
+            [default: retry]
+
+    -f, --full-words
             Require explicit "yes" or "no", not single letters.
             
             Cannot be used with --no-enter.
-    -h, --help          
-            Prints help information
 
-        --no-enter      
+    -h, --help
+            Print help information
+
+        --no
+            Don't ask any question, fail immediately.
+            
+            Turns the tool into no-op failure.  Useful when testing shell scripts built around this
+            tool.
+
+        --no-enter
             Don't require newlines
             
-            Read the character on the terminal as it's typed, without waiting for the user to hit enter/return.
-    -V, --version       
-            Prints version information
+            Read the character on the terminal as it's typed, without waiting for the user to hit
+            enter/return.
 
+    -V, --version
+            Print version information
 
-OPTIONS:
-    -a, --ask-count <ask-count>    
-            Number of times to ask
+        --yes
+            Don't ask any question, return successfully.
             
-            Number of total times a question should be asked.  Use 0 for infinite retries. [default: 3]
-    -d, --default <default>        
-            Choose a default answer
-            
-            If no default is chosen, and the user supplies an empty answer, then a retry is triggered.  Otherwise, the
-            default is used on an empty answer. If the retry count has been hit, then the process assumes a negative
-            response and exits 1. Using the keyword "retry" is identical to omitting the option. [default: retry]
+            Turns the entire tool into a no-op, useful when building shell scripts around the tool.
 
-ARGS:
-    <PROMPT>    
-            The prompt to display
-            
-            Prompt of "Continue?" will become "Continue? [y/n]: ".  Options are added and highlighted based on given
-            settings.  Original message will NEVER be modified. [default: Continue?]
 ```

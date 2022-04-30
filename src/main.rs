@@ -66,12 +66,12 @@ fn parse_retry_count_opt(s: &str) -> Result<TryMode> {
 
 /// Get user confirmation
 #[derive(Clone, Debug, Parser)]
-#[clap(name = "confirm")]
+#[clap(version, about, author, long_about = None)]
 struct MainOptions {
     /// Require explicit "yes" or "no", not single letters.
     ///
     /// Cannot be used with --no-enter.
-    #[clap(short, long)]
+    #[clap(short, long, name = "FULL-WORDS")]
     full_words: bool,
 
     /// Choose a default answer
@@ -88,7 +88,7 @@ struct MainOptions {
     ///
     /// Read the character on the terminal as it's typed, without waiting for
     /// the user to hit enter/return.  
-    #[clap(long, conflicts_with = "full_words")]
+    #[clap(long, conflicts_with = "FULL-WORDS")]
     no_enter: bool,
 
     /// Number of times to ask

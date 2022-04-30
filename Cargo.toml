@@ -5,9 +5,9 @@ license = "Unlicense"
 homepage = "https://github.com/scruffystuffs/confirm"
 repository = "https://github.com/scruffystuffs/confirm"
 documentation = "https://github.com/scruffystuffs/confirm/README.md"
-version = "1.0.0"
+version = "1.1.0"
 authors = ["Wesley Van Melle <van.melle.wes@gmail.com>"]
-edition = "2018"
+edition = "2021"
 
 [dependencies]
 anyhow = "1.0.57"

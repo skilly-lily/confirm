@@ -105,6 +105,20 @@ struct MainOptions {
     /// NEVER be modified.
     #[clap(name = "PROMPT", default_value = "Continue?")]
     prompt: String,
+
+    /// Don't ask any question, return successfully.
+    /// 
+    /// Turns the entire tool into a no-op, useful when building shell scripts
+    /// around the tool.
+    #[clap(long = "--yes")]
+    always_yes: bool,
+
+    /// Don't ask any question, fail immediately.
+    /// 
+    /// Turns the tool into no-op failure.  Useful when testing shell scripts
+    /// built around this tool.
+    #[clap(long = "--no")]
+    always_no: bool,
 }
 
 impl MainOptions {
@@ -249,6 +263,11 @@ fn main() {
         eprintln!("Warning: using confirm when stdin is not a tty is not supported.");
     }
     let opts = MainOptions::parse();
+    if opts.always_yes {
+        return;
+    } else if opts.always_no {
+        std::process::exit(1)
+    }
     let confirmed = Confirm::from(opts).ask_loop();
     if !confirmed {
         std::process::exit(1);

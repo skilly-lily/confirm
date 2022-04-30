@@ -259,14 +259,14 @@ impl From<MainOptions> for Confirm {
 }
 
 fn main() {
-    if atty::isnt(atty::Stream::Stdin) {
-        eprintln!("Warning: using confirm when stdin is not a tty is not supported.");
-    }
     let opts = MainOptions::parse();
     if opts.always_yes {
         return;
     } else if opts.always_no {
         std::process::exit(1)
+    }
+    if atty::isnt(atty::Stream::Stdin) {
+        eprintln!("Warning: using confirm when stdin is not a tty is not supported.");
     }
     let confirmed = Confirm::from(opts).ask_loop();
     if !confirmed {
